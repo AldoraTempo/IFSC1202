@@ -1,4 +1,5 @@
-x = input("Number:")
-print("val1 " + x)
-x ** 2
+import math
+base = int (input("Enter Value:"))
+exponent = int (input("Enter Value:"))
+x = math.pow(base, exponent)
 print(x)
