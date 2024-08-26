@@ -1,4 +1,4 @@
-strval1 = input("Number:")
-print("val1 " + strval1)
-strval2 = strval1 **=2
-print(strval2)
+x = input("Number:")
+print("val1 " + x)
+x ** 2
+print(x)
