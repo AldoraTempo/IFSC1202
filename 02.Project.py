@@ -1,18 +1,23 @@
 import math
 
-def triangle_area():
-  
-    a = float(input("Enter side 1 length: "))
-    print(a)
-    b = float(input("Enter side 2 length: "))
-    print(b)
-    c = float(input("Enter side 3 length: "))
-    print(c)
+def calculate_area(a, b, c):
 
     s = (a + b + c) / 2
-    print(s)
+    
+    area = math.sqrt(s * (s * a) * (s * b) * (s * c))
+    return area
 
-    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+def main():
+    a = float(input("Enter side 1: "))
+    print(a)
+    b = float(input("Enter side 2: "))
+    print(b)
+    c = float(input("Enter side 3: "))
+    print(c)
 
-    print("Area of the triangle is: area ")
-    triangle_area()
+    if a + b > c and a + c > b and b + c > a:
+        
+        area = calculate_area(a, b, c)
+        print("The area of the triangle is: {area}")
+    else:
+        print("The lengths do not form a triangle")
