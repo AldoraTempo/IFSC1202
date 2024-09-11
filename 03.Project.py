@@ -1,7 +1,7 @@
-op = input("Enter an operator (+, -, *, /): ")
-print(op)
 o1 = float(input("Enter the first operand: "))
 print(o1)
+op = input("Enter an operator (+, -, *, /): ")
+print(op)
 o2 = float(input("Enter the second operand: "))
 print(o2)
 
