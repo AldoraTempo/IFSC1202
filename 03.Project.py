@@ -7,17 +7,17 @@ print(o2)
 
 if op == '+':
   res = o1 + o2
-  print("{o1} + {o2} = {res}")
+  print(f"{o1} + {o2} = {res}")
 elif op == '-':
   res = o1 - o2
-  print("{o1} - {o2} = {res}")
+  print(f"{o1} - {o2} = {res}")
 elif op == '*':
   res = o1 * o2
-  print("{o1} * {o2} = {res}")
+  print(f"{o1} * {o2} = {res}")
 elif op == '/':
   if o2 != 0:
     res = o1 / o2
-    print("{o1} / {o2} = {res}")
+    print(f"{o1} / {o2} = {res}")
   else:
       print("Error")
 else:
