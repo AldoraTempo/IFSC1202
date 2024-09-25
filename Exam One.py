@@ -6,7 +6,9 @@ cs = 0
 rounds = 5
 print("Winners and Losers")
 print("You have 5 rounds to play. Guess a number between 1 and 5.")
+print("Ready!")
 
+#One child is chosen as "even" and the other child is chosen as "odd"
 # Game loop for 5 rounds
 for round in range(1, 6):
   print(round)
