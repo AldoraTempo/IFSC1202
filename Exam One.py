@@ -4,7 +4,7 @@ import random
 hs = 0
 cs = 0
 rounds = 5
-print("Winners and Losers - Human is Even Computer is Odd")
+print("Winners and Losers")
 print("You have 5 rounds to play. Guess a number between 1 and 5.")
 
 # Game loop for 5 rounds
