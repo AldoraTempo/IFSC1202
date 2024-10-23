@@ -103,12 +103,12 @@ properties = []
 zipcodes = []
 
 for line in data.splitlines():
-  fields = line.split(,)
-  ad = fields[0]
-  c = fields[1]
-  s = fields[2]
-  zc = fields[3]
-  pr = float(fields[4])
+  ds = line.split(',')
+  ad = ds[0]
+  c = ds[1]
+  s = ds[2]
+  zc = ds[3]
+  pr = float(ds[4])
   properties.append([ad, c, s, zc, pr])
 
 for prop in properties:
@@ -124,11 +124,11 @@ for prop in properties:
   else:
       zipcodes.append([zc, 1, pr])
 
-print("{'Zipcode':<10} {'Count of Properties':<20} {'Average Property Price':<25}
+print(f"{'Zipcode':<10} {'Count':<20} {'Average':<25}")
 
 for zip_row in zipcodes:
     zc = zip_row[0]
-    count = zip_row[1]
+    ct = zip_row[1]
     tp = zip_row[2]
-    ap = tp / count if count > 0 else 0
-    print("{zc:<10} {count:<20} {ap:<25.2}
+    ap = tp / ct if ct > 0 else 0
+    print(f"{zc:<10} {ct:<20} {ap:<25.2f}")
