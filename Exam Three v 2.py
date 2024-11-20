@@ -47,7 +47,7 @@ for _ in range(num_triangles):
     TrianglesList.append(triangle)
 
 # Print the header
-print(f'\n{"Type":<15} {"Side 1 (s1)":<15} {"Side 2 (s2)":<15} {"Side 3 (s3)":<15} {"Perimeter":<15} {"Area":<15} {"Angle 1":<15} {"Angle 2":<15} {"Angle 3":<15}')
+print(f'\n{"Type":<15} {"Side 1":<15} {"Side 2":<15} {"Side 3":<15} {"Perimeter":<15} {"Area":<15} {"Angle 1":<15} {"Angle 2":<15} {"Angle 3":<15}')
 
 # Loop through the list of triangles and print their details
 for triangle in TrianglesList:
