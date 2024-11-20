@@ -35,8 +35,8 @@ def load_triangles_from_file(filename):
     triangles = []
     with open(filename, 'r') as file:
         for line in file:
-            # Assume each line has the form: s1, s2, s3 (space separated)
-            sides = list(map(float, line.strip().split()))
+            # Assume each line has the form: s1, s2, s3 (comma separated)
+            sides = list(map(float, line.strip().split(",")))
             if len(sides) == 3:
                 triangles.append(Triangle(*sides))
     return triangles
@@ -56,5 +56,5 @@ def print_triangle_details(triangles):
 
 # Example usage
 # Assuming you have a text file "triangles.txt" with side lengths in it
-triangles = load_triangles_from_file('triangles.txt')
+triangles = load_triangles_from_file('Exam Three Triangles.txt')
 print_triangle_details(triangles)
