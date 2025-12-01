@@ -2,45 +2,105 @@ EMPLOYEE_FILE = "Test1.txt"
 
 
 def load_employees():
-    """Load employees from a plain text file."""
     employees = []
     try:
         with open(EMPLOYEE_FILE, "r") as file:
             for line in file:
-                emp_id, name, role = line.strip().split(",")
-                employees.append({"id": emp_id, "name": name, "role": role})
+                parts = [p.strip() for p in line.strip().split(",")]
+
+                if len(parts) == 7:
+                    emp = {
+                        "id": parts[0],
+                        "first": parts[1],
+                        "last": parts[2],
+                        "street": parts[3],
+                        "city": parts[4],
+                        "state": parts[5],
+                        "zip": parts[6]
+                    }
+                    employees.append(emp)
     except FileNotFoundError:
-        pass  # If no file exists yet, return empty list
+        pass
     return employees
 
 
 def save_employees(employees):
-    """Save employees to a plain text file."""
     with open(EMPLOYEE_FILE, "w") as file:
         for emp in employees:
-            file.write(f"{emp['id']},{emp['name']},{emp['role']}\n")
+            file.write(
+                f"{emp['id']}, {emp['first']}, {emp['last']}, "
+                f"{emp['street']}, {emp['city']}, {emp['state']}, {emp['zip']}\n"
+            )
     print("Employees saved!")
 
 
 def add_employee(employees):
-    emp_id = input("Enter employee ID: ")
-    name = input("Enter employee name: ")
-    role = input("Enter employee role: ")
-
-    employees.append({"id": emp_id, "name": name, "role": role})
+    emp = {
+        "id": input("ID: "),
+        "first": input("First name: "),
+        "last": input("Last name: "),
+        "street": input("Street: "),
+        "city": input("City: "),
+        "state": input("State: "),
+        "zip": input("ZIP: ")
+    }
+    employees.append(emp)
     print("Employee added!")
 
 
 def delete_employee(employees):
     emp_id = input("Enter ID of employee to delete: ")
-
     for emp in employees:
         if emp["id"] == emp_id:
             employees.remove(emp)
             print("Employee deleted!")
             return
-
     print("Employee not found.")
+
+
+def change_employee(employees):
+    emp_id = input("Enter employee ID to modify: ")
+
+    # find the employee
+    for emp in employees:
+        if emp["id"] == emp_id:
+            break
+    else:
+        print("Employee not found.")
+        return
+
+    # Change menu
+    while True:
+        print("\nChange Menu")
+        print("1. Change First Name")
+        print("2. Change Last Name")
+        print("3. Change Street")
+        print("4. Change City")
+        print("5. Change State")
+        print("6. Change ZIP")
+        print("7. Done Changing")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            emp["first"] = input("New First Name: ")
+        elif choice == "2":
+            emp["last"] = input("New Last Name: ")
+        elif choice == "3":
+            emp["street"] = input("New Street: ")
+        elif choice == "4":
+            emp["city"] = input("New City: ")
+        elif choice == "5":
+            emp["state"] = input("New State: ")
+        elif choice == "6":
+            emp["zip"] = input("New ZIP: ")
+        elif choice == "7":
+            print("Finished modifying employee.")
+            break
+        else:
+            print("Invalid choice.")
+    
+    print("Employee updated!")
 
 
 def list_employees(employees):
@@ -50,36 +110,40 @@ def list_employees(employees):
 
     print("\n--- Employee List ---")
     for emp in employees:
-        print(f"ID: {emp['id']} | Name: {emp['name']} | Role: {emp['role']}")
+        print(
+            f"ID: {emp['id']} | "
+            f"{emp['first']} {emp['last']} | "
+            f"{emp['street']}, {emp['city']}, {emp['state']} {emp['zip']}"
+        )
     print("----------------------\n")
 
 
-def main():
-    employees = load_employees()
+# -------- Program starts here -------- #
 
-    while True:
-        print("1. Add Employee")
-        print("2. Delete Employee")
-        print("3. List Employees")
-        print("4. Save Employees")
-        print("5. Exit")
+employees = load_employees()
 
-        choice = input("Choose an option: ")
+while True:
+    print("1. Add Employee")
+    print("2. Delete Employee")
+    print("3. Change Employee")   # ← added here
+    print("4. List Employees")
+    print("5. Save Employees")
+    print("6. Exit")
 
-        if choice == "1":
-            add_employee(employees)
-        elif choice == "2":
-            delete_employee(employees)
-        elif choice == "3":
-            list_employees(employees)
-        elif choice == "4":
-            save_employees(employees)
-        elif choice == "5":
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid option, try again.")
+    choice = input("Choose an option: ")
 
-
-if __name__ == "__main__":
-    main()
+    if choice == "1":
+        add_employee(employees)
+    elif choice == "2":
+        delete_employee(employees)
+    elif choice == "3":
+        change_employee(employees)
+    elif choice == "4":
+        list_employees(employees)
+    elif choice == "5":
+        save_employees(employees)
+    elif choice == "6":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Try again.")
